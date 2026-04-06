@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "b3e34b9d-5aae-41d4-bdcf-88f58b88d877",
+		"name": "IP Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subnets",
+			"item": [
+				{
+					"name": "Create Subnet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cidr\": \"192.168.1.0/24\",\n  \"description\": \"Main Office Network\",\n  \"tags\": \"office,internal\"\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/v1/subnets", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "v1", "subnets" ] }
+					}
+				},
+				{
+					"name": "Get Subnets",
+					"request": {
+						"method": "GET",
+						"url": { "raw": "http://localhost:8080/api/v1/subnets", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "v1", "subnets" ] }
+					}
+				}
+			]
+		},
+		{
+			"name": "IP Addresses",
+			"item": [
+				{
+					"name": "Allocate Next Available IP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"hostname\": \"server-1\",\n  \"deviceType\": \"Server\",\n  \"owner\": \"IT\"\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/v1/subnets/1/ips/allocate", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "v1", "subnets", "1", "ips", "allocate" ] }
+					}
+				},
+				{
+					"name": "Bulk Allocate IP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"count\": 5,\n  \"hostnamePrefix\": \"desktop\",\n  \"deviceType\": \"Workstation\"\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/v1/subnets/1/ips/bulk-allocate", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "api", "v1", "subnets", "1", "ips", "bulk-allocate" ] }
+					}
+				}
+			]
+		}
+	]
+}

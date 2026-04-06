@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ip-manager
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ipmanager
+
+server:
+  port: 8080
